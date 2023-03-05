@@ -11,7 +11,7 @@ const userSchema = {
   properties: {
     id: { type: 'number' },
     name: { type: 'string' },
-    email: { type: 'string', format: 'email' },
+    email: { type: 'string' },
   },
   required: ['name', 'email'],
   additionalProperties: false,
