@@ -7,11 +7,13 @@ const corsOptions = {
   origin: '*',
 };
 
+const port = process.env.PORT || 8000;
+
 app.use(cors(corsOptions));
 
 app.get('/', (req, res) => {
   res.send(
-    data.users.map((user: typeof data.users[number]) => {
+    data.users.map((user: (typeof data.users)[number]) => {
       return {
         id: user.id,
         email: user.email,
@@ -21,6 +23,6 @@ app.get('/', (req, res) => {
   );
 });
 
-app.listen(3000, () => {
+app.listen(port, () => {
   console.log(`Server started at http://localhost:3000`);
 });

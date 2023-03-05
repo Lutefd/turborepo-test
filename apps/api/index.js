@@ -10,6 +10,7 @@ const app = (0, express_1.default)();
 const corsOptions = {
     origin: '*',
 };
+const port = process.env.port || 8000;
 app.use((0, cors_1.default)(corsOptions));
 app.get('/', (req, res) => {
     res.send(data_json_1.default.users.map((user) => {
@@ -20,6 +21,6 @@ app.get('/', (req, res) => {
         };
     }));
 });
-app.listen(3000, () => {
+app.listen(port, () => {
     console.log(`Server started at http://localhost:3000`);
 });
