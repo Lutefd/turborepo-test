@@ -47,6 +47,20 @@ app.post('/users', (req, res) => {
         res.status(201).json(newUser);
     }
 });
+app.put('/users/:id', (req, res) => {
+    const newUser = req.body;
+    const userId = Number(req.params.id);
+    const userIndex = data_json_1.default.users.findIndex((user) => user.id === userId);
+    if (userIndex === -1) {
+        res.status(404).json({ error: 'User not found' });
+    }
+    else {
+        const newUser = req.body;
+        newUser.id = userId;
+        data_json_1.default.users[userIndex] = newUser;
+        res.status(200).json(newUser);
+    }
+});
 app.delete('/users/:id', (req, res) => {
     const userId = Number(req.params.id);
     const userIndex = data_json_1.default.users.findIndex((user) => user.id === userId);

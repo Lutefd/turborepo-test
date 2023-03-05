@@ -57,6 +57,21 @@ app.post('/users', (req, res) => {
   }
 });
 
+app.put('/users/:id', (req, res) => {
+  const newUser: NewUser = req.body;
+
+  const userId = Number(req.params.id);
+  const userIndex = data.users.findIndex((user) => user.id === userId);
+  if (userIndex === -1) {
+    res.status(404).json({ error: 'User not found' });
+  } else {
+    const newUser = req.body;
+    newUser.id = userId;
+    data.users[userIndex] = newUser;
+    res.status(200).json(newUser);
+  }
+});
+
 app.delete('/users/:id', (req, res) => {
   const userId = Number(req.params.id);
   const userIndex = data.users.findIndex((user) => user.id === userId);
