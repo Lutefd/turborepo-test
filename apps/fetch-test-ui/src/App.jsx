@@ -7,7 +7,7 @@ function App() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3000/')
+    fetch('https://turborepo-test-production.up.railway.app/')
       .then((response) => response.json())
       .then((json) => setData(json))
       .then(() => console.log(data));
