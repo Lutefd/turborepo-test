@@ -9,7 +9,6 @@ const ajv = new Ajv();
 const userSchema = {
   type: 'object',
   properties: {
-    id: { type: 'number' },
     name: { type: 'string' },
     email: { type: 'string' },
   },
@@ -40,8 +39,14 @@ app.get('/users', (req, res) => {
   );
 });
 
+interface NewUser {
+  id: number;
+  name: string;
+  email: string;
+}
+
 app.post('/users', (req, res) => {
-  const newUser = req.body;
+  const newUser: NewUser = req.body;
   const valid = validate(newUser);
   if (!valid) {
     res.status(400).json({ error: validate.errors });

@@ -13,9 +13,8 @@ const ajv = new ajv_1.default();
 const userSchema = {
     type: 'object',
     properties: {
-        id: { type: 'number' },
         name: { type: 'string' },
-        email: { type: 'string', format: 'email' },
+        email: { type: 'string' },
     },
     required: ['name', 'email'],
     additionalProperties: false,
